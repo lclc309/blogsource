@@ -19,4 +19,17 @@
     NexT.{{ theme.scheme }}
   </a>
 </div>
+
+<div class="busuanzi-count">
+
+  <script async="" src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <!--本站访客数 -->
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+    <!--本站总访问量 -->
+    <span class="site-uv"><i class="fa fa-cloud"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+    <!--本文总阅读量 -->
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_page_pv"></span></span>   
+  
+  
+</div>
 {% endif %}
