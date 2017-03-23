@@ -272,7 +272,7 @@ mathjax:
 baidu_analytics: 2618b7142f8ef9f2edf78e8752556ad8
 
 # Duoshuo ShortName
-duoshuo_shortname: lclc309
+#duoshuo_shortname: lclc309
 
 # Disqus
 #disqus_shortname:
@@ -285,7 +285,7 @@ duoshuo_shortname: lclc309
 
 # Support for youyan comments system.
 # You can get your uid from http://www.uyan.cc
-#youyan_uid: your uid
+youyan_uid: 2128259
 
 # Support for LiveRe comments system.
 # You can get your uid from https://livere.com/insight/myCode (General web site)
@@ -327,10 +327,10 @@ duoshuo_shortname: lclc309
 # Make duoshuo show UA
 # user_id must NOT be null when admin_enable is true!
 # you can visit http://dev.duoshuo.com get duoshuo user id.
-duoshuo_info:
-  ua_enable: true
-  admin_enable: false
-  user_id: 0
+# duoshuo_info:
+#   ua_enable: true
+#   admin_enable: false
+#   user_id: 0
   #admin_nickname: Author
 
 
