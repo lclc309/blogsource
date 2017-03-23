@@ -272,10 +272,10 @@ mathjax:
 baidu_analytics: 2618b7142f8ef9f2edf78e8752556ad8
 
 # Duoshuo ShortName
-#duoshuo_shortname: lclc309
+# duoshuo_shortname: lclc309
 
 # Disqus
-#disqus_shortname:
+disqus_shortname: 
 
 # Hypercomments
 #hypercomments_id:
