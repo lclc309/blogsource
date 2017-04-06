@@ -4,13 +4,18 @@
     {% set gentie_productKey = theme.gentie_productKey %}
     <script>
       var cloudTieConfig = {
-        url: document.location.href, 
-        sourceId: "",
+        url: "", 
+        sourceId: "{{page.path}}",
         productKey: "{{gentie_productKey}}",
         target: "cloud-tie-wrapper"
       };
+      //document.location.href
     </script>
     <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+    <script>
+      var yunManualLoad = true;
+      Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true);
+    </script>
   {% endif %}
 
 {% endif %}

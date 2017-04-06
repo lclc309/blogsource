@@ -275,13 +275,13 @@ baidu_analytics: 2618b7142f8ef9f2edf78e8752556ad8
 # duoshuo_shortname: lclc309
 
 # Disqus
-disqus_shortname: 
+#disqus_shortname: 
 
 # Hypercomments
 #hypercomments_id:
 
 # Gentie productKey
-#gentie_productKey:
+gentie_productKey: 9b938444f00445b99637d4801482bc49
 
 # Support for youyan comments system.
 # You can get your uid from http://www.uyan.cc
@@ -304,7 +304,7 @@ disqus_shortname:
 #add_this_id:
 
 # Share
-duoshuo_share: true
+#duoshuo_share: true
 
 # Google Webmaster tools verification setting
 # See: https://www.google.com/webmasters/
@@ -327,10 +327,10 @@ duoshuo_share: true
 # Make duoshuo show UA
 # user_id must NOT be null when admin_enable is true!
 # you can visit http://dev.duoshuo.com get duoshuo user id.
-duoshuo_info:
-  ua_enable: true
-  admin_enable: false
-  user_id: 0
+# duoshuo_info:
+#   ua_enable: true
+#   admin_enable: false
+#   user_id: 0
   #admin_nickname: Author
 
 
