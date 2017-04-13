@@ -86,7 +86,7 @@ crontabl默认使用vim打开.
 在打开的文件中添加一行
 
 ```shell
-0 2 * * * /storage/tools/gitlab/gitlab_backup.sh
+0 2 * * * sh /storage/tools/gitlab/gitlab_backup.sh
 ```
 前面部分为cron表达式,分时日月周,后面为之前我们的脚本路径,此语句为每天凌晨2点执行一次
 
