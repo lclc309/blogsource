@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="环境搭建," />
+  <meta name="keywords" content="spring," />
 
 
 
@@ -87,16 +87,16 @@
 
 
 
-<meta name="description" content="公司版本控制工具从svn迁移至git后,需要每天进行备份.">
+<meta name="description" content="使用spring做事件">
 <meta property="og:type" content="article">
-<meta property="og:title" content="gitlab 定时自动备份">
-<meta property="og:url" content="http://lclc309.github.io/2017/04/12/gitlab-backup/index.html">
+<meta property="og:title" content="使用spring事件机制">
+<meta property="og:url" content="http://lclc309.github.io/2017/08/03/spring-event/index.html">
 <meta property="og:site_name" content="夜鸢lclc">
-<meta property="og:description" content="公司版本控制工具从svn迁移至git后,需要每天进行备份.">
-<meta property="og:updated_time" content="2017-04-13T01:32:42.630Z">
+<meta property="og:description" content="使用spring做事件">
+<meta property="og:updated_time" content="2017-08-03T02:08:30.734Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="gitlab 定时自动备份">
-<meta name="twitter:description" content="公司版本控制工具从svn迁移至git后,需要每天进行备份.">
+<meta name="twitter:title" content="使用spring事件机制">
+<meta name="twitter:description" content="使用spring做事件">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://lclc309.github.io/2017/04/12/gitlab-backup/"/>
+  <link rel="canonical" href="http://lclc309.github.io/2017/08/03/spring-event/"/>
 
 
 
 
 
-  <title> gitlab 定时自动备份 | 夜鸢lclc </title>
+  <title> 使用spring事件机制 | 夜鸢lclc </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -257,7 +257,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://lclc309.github.io/2017/04/12/gitlab-backup/">
+  <link itemprop="mainEntityOfPage" href="http://lclc309.github.io/2017/08/03/spring-event/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="lclc">
@@ -281,7 +281,7 @@
             
             
               
-                gitlab 定时自动备份
+                使用spring事件机制
               
             
           </h1>
@@ -296,8 +296,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-12T00:00:00+08:00">
-                2017-04-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-03T00:00:00+08:00">
+                2017-08-03
               </time>
             
 
@@ -319,8 +319,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/环境搭建/" itemprop="url" rel="index">
-                    <span itemprop="name">环境搭建</span>
+                  <a href="/categories/spring/" itemprop="url" rel="index">
+                    <span itemprop="name">spring</span>
                   </a>
                 </span>
 
@@ -337,7 +337,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/2017/04/12/gitlab-backup/#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/2017/08/03/spring-event/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -364,26 +364,24 @@
       
 
       
-        <p>公司版本控制工具从svn迁移至git后,需要每天进行备份.</p>
+        <p>使用spring做事件</p>
 <a id="more"></a>
-<p>gitlab路径:/storage/tools/gitlab</p>
-<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><p>备份的话使用命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">cd /storage/tools/gitlab</div><div class="line">./use_gitlab</div><div class="line">cd /storage/tools/gitlab/apps/gitlab/htdocs</div><div class="line">bundle exec bin/rake gitlab:backup:create RAILS_ENV=production </div><div class="line">exit</div></pre></td></tr></table></figure>
-<p>备份的默认路径为:tmp/backups/<br>这里需要修改配置,使备份到指定路径</p>
-<p>打开:/storage/tools/gitlab/apps/gitlab/htdocs/config/gitlab.yml文件</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">## Backup settings</span></div><div class="line"><span class="attr"> backup:</span></div><div class="line"><span class="attr">   path:</span> <span class="string">"/var/opt/gitlab/backups"</span>   <span class="comment"># Relative paths are relative to Rails.root (default: tmp/backups/)</span></div><div class="line"><span class="attr">   archive_permissions:</span>  <span class="comment"># Permissions for the resulting backup.tar file (default: 0600)</span></div><div class="line"><span class="attr">   keep_time:</span>    <span class="comment"># default: 0 (forever) (in seconds)</span></div><div class="line"><span class="attr">   pg_schema:</span>    <span class="comment"># default: nil, it means that all schemas will be backed up</span></div><div class="line"><span class="attr">   upload:</span></div><div class="line">     <span class="comment"># Fog storage connection settings, see http://fog.io/storage/ .</span></div><div class="line"><span class="attr">     connection:</span></div><div class="line">     <span class="comment"># The remote 'directory' to store your backups. For S3, this would be the bucket name.</span></div><div class="line"><span class="attr">     remote_directory:</span></div><div class="line"><span class="attr">     multipart_chunk_size:</span></div><div class="line"><span class="attr">     encryption:</span></div></pre></td></tr></table></figure>
-<p>修改path路径:表示备份文件所在的路径<br>archive_permissions:备份文件所拥有的权限<br>keep_time:备份文件保留多长时间</p>
-<h1 id="脚本定时任务"><a href="#脚本定时任务" class="headerlink" title="脚本定时任务"></a>脚本定时任务</h1><p>使用命令的方式虽然可以进行备份,但第一比较复杂,第二需要人工敲不方便.<br>所以使用脚本的方法,然后用linux的定时任务去定时执行.</p>
-<h2 id="给出我的脚本"><a href="#给出我的脚本" class="headerlink" title="给出我的脚本:"></a>给出我的脚本:</h2><p>gitlab_backup.sh</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">#做gitlab备份的脚本</div><div class="line">#!/bin/bash </div><div class="line">if [ `id -u` -ne 0 ];then</div><div class="line">   echo &quot;this backup script must be exec as root.&quot; exit</div><div class="line">fi</div><div class="line">source_name=&quot;/storage/tools/gitlab&quot;</div><div class="line">date</div><div class="line"></div><div class="line">PATH=&quot;$&#123;source_name&#125;/nodejs/bin:$&#123;source_name&#125;/apps/gitlabci/gitlabci-multirunner:$&#123;source_name&#125;/apps/gitlab/gitlab-shell/bin:$&#123;source_name&#125;/redis/bin:$&#123;source_name&#125;/sqlite/bin:$&#123;source_name&#125;/python/bin:$&#123;source_name&#125;/perl/bin:$&#123;source_name&#125;/git/bin:$&#123;source_name&#125;/ruby/bin:$&#123;source_name&#125;/mysql/bin:$&#123;source_name&#125;/php/bin:$&#123;source_name&#125;/postgresql/bin:$&#123;source_name&#125;/go/bin:$&#123;source_name&#125;/apache2/bin:$&#123;source_name&#125;/common/bin:$PATH&quot;</div><div class="line"></div><div class="line">echo &quot;backup gitlab to local storage begin.. &quot; </div><div class="line">cd $&#123;source_name&#125;/apps/gitlab/htdocs</div><div class="line"></div><div class="line">bundle exec bin/rake gitlab:backup:create RAILS_ENV=production</div><div class="line"></div><div class="line">echo &quot;this job is end.&quot;</div></pre></td></tr></table></figure>
-<p>主要还是使用之前命令执行,但是单纯的命令linux并不认识,所以在之前先指定一个环境变量PATH.</p>
-<p>当然,现在是备份的本地,理论上应该是远程备份,执行完命令后可在脚本后使用rsync命令</p>
-<h2 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h2><p>输入命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">crontab -e</div></pre></td></tr></table></figure>
-<p>crontabl默认使用vim打开.<br>在打开的文件中添加一行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">0 2 * * * sh /storage/tools/gitlab/gitlab_backup.sh</div></pre></td></tr></table></figure>
-<p>前面部分为cron表达式,分时日月周,后面为之前我们的脚本路径,此语句为每天凌晨2点执行一次</p>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="http://blog.chinaunix.net/uid-20682890-id-4698271.html" target="_blank" rel="external">http://blog.chinaunix.net/uid-20682890-id-4698271.html</a><br><a href="http://blog.csdn.net/felix_yujing/article/details/52918803" target="_blank" rel="external">http://blog.csdn.net/felix_yujing/article/details/52918803</a></p>
+<p>#定义事件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoEvent</span> <span class="keyword">extends</span> <span class="title">ApplicationEvent</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">DemoEvent</span><span class="params">(Object source)</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>(source);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>所有的spring事件需要继承 ApplicationEvent 类，spring通过事件的类型来路由到事件监听器上。</p>
+<p>#定义事件监听器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@Service</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoEventListener</span> <span class="keyword">implements</span> <span class="title">ApplicationListener</span>&lt;<span class="title">DemoEvent</span>&gt; </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onApplicationEvent</span><span class="params">(DemoEvent event)</span> </span>&#123;</div><div class="line">		System.err.println(<span class="string">"监听到新的时间聆听==============="</span>+event.getSource());</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>事件监听器需要实现ApplicationListener接口，泛型为监听的事件，并将监听器暴露至spring容器中。</p>
+<p>#发布事件</p>
+<p>只需要在事件发生时调用applicationContext中的方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">applicationContext.publishEvent(<span class="keyword">new</span> DemoEvent(<span class="string">"测试事件发生了"</span>));</div></pre></td></tr></table></figure>
+<p>发布后为在同线程中进行监听</p>
+<p>#异步监听</p>
+<p>即发布事件与监听事件的处理不在同一个线程，进行异步的调用</p>
+<p>需要在是application-context中加上配置</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">&lt;!-- 开启@AspectJ AOP代理 --&gt;</span>    </div><div class="line"><span class="tag">&lt;<span class="name">aop:aspectj-autoproxy</span> <span class="attr">proxy-target-class</span>=<span class="string">"true"</span>/&gt;</span>    </div><div class="line">    </div><div class="line"><span class="comment">&lt;!-- 任务调度器 --&gt;</span>    </div><div class="line"><span class="tag">&lt;<span class="name">task:scheduler</span> <span class="attr">id</span>=<span class="string">"scheduler"</span> <span class="attr">pool-size</span>=<span class="string">"10"</span>/&gt;</span>    </div><div class="line">    </div><div class="line"><span class="comment">&lt;!-- 任务执行器 --&gt;</span>    </div><div class="line"><span class="tag">&lt;<span class="name">task:executor</span> <span class="attr">id</span>=<span class="string">"executor"</span> <span class="attr">pool-size</span>=<span class="string">"10"</span>/&gt;</span>    </div><div class="line">    </div><div class="line"><span class="comment">&lt;!--开启注解调度支持 @Async @Scheduled--&gt;</span>    </div><div class="line"><span class="tag">&lt;<span class="name">task:annotation-driven</span> <span class="attr">executor</span>=<span class="string">"executor"</span> <span class="attr">scheduler</span>=<span class="string">"scheduler"</span> <span class="attr">proxy-target-class</span>=<span class="string">"true"</span>/&gt;</span></div></pre></td></tr></table></figure>
+<p>并在监听器上加上注解 @Async</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">@Service</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoEventListener</span> <span class="keyword">implements</span> <span class="title">ApplicationListener</span>&lt;<span class="title">DemoEvent</span>&gt; </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="meta">@Async</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onApplicationEvent</span><span class="params">(DemoEvent event)</span> </span>&#123;</div><div class="line">		System.err.println(<span class="string">"监听到新的时间聆听==============="</span>+event.getSource());</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -407,7 +405,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/环境搭建/" rel="tag"># 环境搭建</a>
+            <a href="/tags/spring/" rel="tag"># spring</a>
           
         </div>
       
@@ -420,8 +418,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/05/add-jar-to-lib/" rel="next" title="java动态加载jar文件">
-                <i class="fa fa-chevron-left"></i> java动态加载jar文件
+              <a href="/2017/04/12/gitlab-backup/" rel="next" title="gitlab 定时自动备份">
+                <i class="fa fa-chevron-left"></i> gitlab 定时自动备份
               </a>
             
           </div>
@@ -429,10 +427,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/08/03/spring-event/" rel="prev" title="使用spring事件机制">
-                使用spring事件机制 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -481,17 +475,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -547,22 +532,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本操作"><span class="nav-number">1.</span> <span class="nav-text">基本操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#脚本定时任务"><span class="nav-number">2.</span> <span class="nav-text">脚本定时任务</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#给出我的脚本"><span class="nav-number">2.1.</span> <span class="nav-text">给出我的脚本:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定时任务"><span class="nav-number">2.2.</span> <span class="nav-text">定时任务</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
     </div>
@@ -707,7 +676,7 @@
     <script>
       var cloudTieConfig = {
         url: "", 
-        sourceId: "2017/04/12/gitlab-backup/",
+        sourceId: "2017/08/03/spring-event/",
         productKey: "9b938444f00445b99637d4801482bc49",
         target: "cloud-tie-wrapper"
       };
